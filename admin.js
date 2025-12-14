@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const API_BASE = "http://localhost:5000"; // deploy ke baad change karna
+    const API_BASE = "https://karsamrit-backend.onrender.com";
 
     const loginBox = document.getElementById("admin-login");
     const loginForm = document.getElementById("admin-login-form");

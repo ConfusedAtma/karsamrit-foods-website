@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     if (window.lucide) lucide.createIcons();
 
-    const API_BASE = "http://localhost:5000";
+    const API_BASE = "https://karsamrit-backend.onrender.com";
+
 
     /* =====================
        PRODUCTS (SOURCE OF TRUTH)
