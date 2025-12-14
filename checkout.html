@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Karsamrit Foods | Checkout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Same CSS as main site -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Checkout Script -->
+    <script src="checkout.js" defer></script>
+</head>
+
+<body>
+    <!-- Simple navbar -->
+    <nav class="navbar scrolled" id="navbar">
+        <a href="index.html#hero" class="logo">
+            <img src="logo.jpeg" alt="Karsamrit Foods Logo" class="logo-img">
+        </a>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="index.html#products" class="nav-link">Shop</a></li>
+            <li><a href="index.html#about" class="nav-link">About Us</a></li>
+            <li><a href="index.html#blog" class="nav-link">Blog</a></li>
+        </ul>
+    </nav>
+
+    <section style="padding-top: 6rem;" id="checkout">
+        <!-- YE PURE CART + FORM + EMPTY STATE KA WRAPPER HAI -->
+        <div id="checkout-wrapper">
+            <h2>Your Cart</h2>
+            <p class="section-subtitle">Review your items before checkout</p>
+
+            <div class="checkout-container">
+                <div id="cart-items"></div>
+
+                <div class="cart-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Items Total</span>
+                        <span id="items-total">₹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Estimated Shipping</span>
+                        <span id="shipping-amount">₹0</span>
+                    </div>
+                    <p class="shipping-rule-note">
+                        Shipping ₹99 for orders below ₹500. Free shipping on orders ₹500 and above.
+                    </p>
+                    <p class="free-delivery-note" id="free-delivery-note"></p>
+
+                    <div class="summary-row summary-total">
+                        <span>Grand Total</span>
+                        <span id="grand-total">₹0</span>
+                    </div>
+
+                    <h4 class="checkout-subheading">Delivery Details</h4>
+
+                    <form id="checkout-form" class="checkout-form">
+                        <!-- Inline error message -->
+                        <p id="checkout-error" class="checkout-error" style="display:none;"></p>
+                        <label>
+                            Full Name *
+                            <input type="text" id="checkout-name" placeholder="Your name">
+                        </label>
+                        <label>
+                            Phone Number *
+                            <input type="tel" id="checkout-phone" placeholder="10-digit mobile number">
+                        </label>
+                        <label>
+                            Email (optional)
+                            <input type="email" id="checkout-email" placeholder="you@example.com">
+                        </label>
+
+                        <label>
+                            House / Flat No. *
+                            <input type="text" id="checkout-house" placeholder="e.g. 23B, 2nd Floor">
+                        </label>
+                        <label>
+                            Street / Road *
+                            <input type="text" id="checkout-street" placeholder="e.g. MG Road">
+                        </label>
+                        <label>
+                            Area / Locality *
+                            <input type="text" id="checkout-area" placeholder="e.g. Indiranagar">
+                        </label>
+
+                        <div class="checkout-form-row">
+                            <label class="half">
+                                Pincode *
+                                <input type="tel" id="checkout-pincode" maxlength="6" placeholder="6-digit PIN">
+                            </label>
+                            <label class="half">
+                                City / Post Office *
+                                <input type="text" id="checkout-city" placeholder="Enter manually if not auto detected">
+                            </label>
+                        </div>
+
+                        <label>
+                            State *
+                            <input type="text" id="checkout-state" placeholder="Enter manually if not auto detected">
+                        </label>
+                        <label>
+                            GSTIN Number (optional)
+                            <input type="text" id="checkout-gstin" placeholder="GSTIN number">
+                        </label>
+
+
+                        <div class="checkout-actions">
+                            <button type="submit" class="btn" id="checkout-btn">Place Order</button>
+                            <button type="button" class="btn btn-small" id="back-btn" style="margin-top: 0.5rem;">Back
+                                to Shop</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- EMPTY CART STATE (AB WRAPPER KE ANDAR) -->
+            <div id="empty-cart" class="empty-cart">
+                <p>Your cart is empty.</p>
+                <a href="index.html#products" class="btn btn-small">Back to Store</a>
+            </div>
+        </div>
+
+        <!-- ORDER SUCCESS SECTION -->
+        <div id="order-success" class="order-success" style="display: none;">
+            <h2>Order Successful</h2>
+            <p class="order-success-subtitle">Thank you for shopping with Karsamrit Foods.</p>
+
+            <div class="order-success-card">
+                <p><strong>Order ID:</strong> <span id="success-order-id"></span></p>
+                <p><strong>Estimated Delivery:</strong> <span id="success-delivery-date"></span></p>
+                <p><strong>Delivery Address:</strong><br><span id="success-address"></span></p>
+            </div>
+
+            <div class="order-progress">
+                <div class="progress-line"></div>
+                <div class="step done">
+                    <div class="circle">1</div>
+                    <div class="label">Order placed</div>
+                </div>
+                <div class="step">
+                    <div class="circle">2</div>
+                    <div class="label">Shipped</div>
+                </div>
+                <div class="step">
+                    <div class="circle">3</div>
+                    <div class="label">Delivered</div>
+                </div>
+            </div>
+
+            <h3>Order Details</h3>
+            <div class="order-table-wrapper">
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Qty</th>
+                            <th>Unit Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="success-items-body"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="tfoot-label">Items Total</td>
+                            <td id="success-items-total"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="tfoot-label">Shipping</td>
+                            <td id="success-shipping"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="tfoot-label grand">Grand Total</td>
+                            <td id="success-grand-total"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <button class="btn" id="success-back-btn">Back to Shop</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="logo.jpeg" alt="Karsamrit Foods Logo" class="footer-logo-img">
+                </div>
+                <p class="footer-text">
+                    Pure Taste. Natural Goodness. Bringing the best of nature directly to your home.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#products">Shop</a></li>
+                    <li><a href="index.html#categories">Categories</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><a href="#">support@karsamrit.com</a></li>
+                    <li><a href="#">+91 98765 43210</a></li>
+                    <li><a href="#">Bengaluru, India</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="social-icon"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="social-icon"><i data-lucide="twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Karsamrit Foods. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>

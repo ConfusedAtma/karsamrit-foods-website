@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karsamrit Foods | Natural & Organic</title>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Main Script -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="#hero" class="logo">
+            <img src="logo.jpeg" alt="Karsamrit Foods Logo" class="logo-img">
+        </a>
+
+        <div class="hamburger" id="hamburger">
+            <i data-lucide="menu"></i>
+        </div>
+
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="#products" class="nav-link">Shop</a></li>
+            <li class="dropdown" id="cat-dropdown">
+                <span class="nav-link">
+                    Categories
+                    <i data-lucide="chevron-down" size="16"></i>
+                </span>
+                <ul class="dropdown-content">
+                    <li>
+                        <a href="#products" class="dropdown-item" onclick="filterProducts('dry-fruits')">
+                            Dry Fruits
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#products" class="dropdown-item" onclick="filterProducts('snacks')">
+                            Snacks
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#blog" class="nav-link">Blog</a></li>
+            <li><a href="#about" class="nav-link">About Us</a></li>
+            <li><a href="#" class="nav-link auth-link" id="login-link">Login</a></li>
+            <li><a href="#" class="auth-btn" id="signup-link">Sign Up</a></li>
+
+            <li>
+                <a href="checkout.html" class="nav-link cart-link">
+                    <i data-lucide="shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </li>
+
+
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Pure Taste. Natural Goodness.</h1>
+            <p>Experience the finest organic dry fruits and sun-dried snacks.</p>
+            <a href="#products" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Categories Preview -->
+    <section id="categories">
+        <h2>Our Collections</h2>
+        <p class="section-subtitle">
+            Handpicked natural goodness for your healthy lifestyle
+        </p>
+        <div class="categories-grid">
+            <div class="category-card" onclick="location.href='#products'; filterProducts('dry-fruits')">
+                <img src="categoriesimg/dryfoodspacket.png" alt="Dry Fruits" />
+                <div class="category-overlay">
+                    <h3>Dry Fruits</h3>
+                    <p>Premium Cashews & Dates</p>
+                </div>
+            </div>
+            <div class="category-card" onclick="location.href='#products'; filterProducts('snacks')">
+                <img src="categoriesimg/chipspackets.png" alt="Healthy Snacks" />
+                <div class="category-overlay">
+                    <h3>Healthy Snacks</h3>
+                    <p>Sun-dried Beetroot & Carrot Chips</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Products Section -->
+    <section id="products" class="products-section">
+        <div class="products-container">
+            <h2>Our Products</h2>
+            <p class="section-subtitle">Fresh from the farm to your table</p>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterProducts('all')">
+                    All
+                </button>
+                <button class="filter-btn" onclick="filterProducts('dry-fruits')">
+                    Dry Fruits
+                </button>
+                <button class="filter-btn" onclick="filterProducts('snacks')">
+                    Snacks
+                </button>
+            </div>
+
+            <div class="product-grid" id="product-grid">
+                <!-- Products injected via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="whoweare.jpg" alt="About Karsamrit Foods" />
+            </div>
+            <div class="about-text">
+                <h2>Who We Are</h2>
+                <p>
+                    At Karsamrit Foods, we believe that nature holds the best recipes
+                    for health and happiness. Founded with a mission to bring pure,
+                    unadulterated food to your table, we specialize in sourcing the
+                    finest organic ingredients.
+                </p>
+                <p>
+                    From our handpicked cashews to our innovative sun-dried vegetable
+                    chips, every product is a testament to our commitment to quality.
+                    We deliver natural snacks and dry fruits without compromise—no
+                    artificial preservatives, just real food.
+                </p>
+                <a href="#blog" class="btn btn-small">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog-section">
+        <h2>Latest from the Blog</h2>
+        <p class="section-subtitle">Tips for a healthier, tastier life</p>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-img">
+                    <img src="productsimg/beetrootchips.jpg" alt="Healthy Eating" />
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">Oct 12, 2023</span>
+                    <h3 class="blog-title">The Benefits of Sun-dried Snacks</h3>
+                    <p class="product-desc">
+                        Why choosing sun-dried over fried is the best decision for your
+                        heart.
+                    </p>
+                    <a href="#" class="read-more">
+                        Read Article <i data-lucide="arrow-right" size="14"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-img">
+                    <img src="productsimg/cashews.jpg" alt="Cashews" />
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">Sep 28, 2023</span>
+                    <h3 class="blog-title">Why Organic Cashews Matter</h3>
+                    <p class="product-desc">
+                        Discover the difference in taste and nutrition with organic
+                        farming.
+                    </p>
+                    <a href="#" class="read-more">
+                        Read Article <i data-lucide="arrow-right" size="14"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-img">
+                    <img src="productsimg/dates.jpg" alt="Healthy Snacks" />
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">Sep 15, 2023</span>
+                    <h3 class="blog-title">5 Ways to Use Date Syrup</h3>
+                    <p class="product-desc">
+                        A natural sweetener that can transform your breakfast routine.
+                    </p>
+                    <a href="#" class="read-more">
+                        Read Article <i data-lucide="arrow-right" size="14"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="logo.jpeg" alt="Karsamrit Foods Logo" class="footer-logo-img">
+                </div>
+
+                <p class="footer-text">
+                    Pure Taste. Natural Goodness. Bringing the best of nature directly
+                    to your home.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#products">Shop</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><a href="#">support@karsamrit.com</a></li>
+                    <li><a href="#">+91 98765 43210</a></li>
+                    <li><a href="#">Bengaluru, India</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="social-icon"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="social-icon"><i data-lucide="twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Karsamrit Foods. All rights reserved.
+        </div>
+    </footer>
+        <!-- Auth Modal Overlay -->
+    <div class="auth-modal-overlay" id="auth-overlay">
+        <div class="auth-modal" id="login-modal">
+            <button class="auth-close" id="auth-close-login">&times;</button>
+            <h3>Login</h3>
+            <p class="auth-subtitle">Continue with your email or phone and OTP.</p>
+            <form id="login-form">
+                <label>
+                    Email or Phone
+                    <input type="text" id="login-identifier" placeholder="Enter email or phone">
+                </label>
+                <label>
+                    OTP
+                    <input type="text" id="login-otp" placeholder="Enter OTP">
+                </label>
+                <div class="auth-actions">
+                    <button type="button" class="btn btn-small" id="login-send-otp">Send OTP</button>
+                    <button type="submit" class="btn btn-small">Login</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="auth-modal" id="signup-modal">
+            <button class="auth-close" id="auth-close-signup">&times;</button>
+            <h3>Sign Up</h3>
+            <p class="auth-subtitle">Create a quick account with OTP verification.</p>
+            <form id="signup-form">
+                <label>
+                    Name
+                    <input type="text" id="signup-name" placeholder="Your name">
+                </label>
+                <label>
+                    Email
+                    <input type="email" id="signup-email" placeholder="you@example.com">
+                </label>
+                <label>
+                    Phone
+                    <input type="tel" id="signup-phone" placeholder="10-digit phone number">
+                </label>
+                <label>
+                    OTP
+                    <input type="text" id="signup-otp" placeholder="Enter OTP">
+                </label>
+                <div class="auth-actions">
+                    <button type="button" class="btn btn-small" id="signup-send-otp">Send OTP</button>
+                    <button type="submit" class="btn btn-small">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

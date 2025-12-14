@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Karsamrit Foods | Admin Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Lucide Icons (optional) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="admin.js" defer></script>
+</head>
+
+<body>
+    <!-- Simple navbar -->
+    <nav class="navbar scrolled">
+        <a href="index.html#hero" class="logo">
+            <img src="logo.jpeg" alt="Karsamrit Foods Logo" class="logo-img">
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html#products" class="nav-link">Shop</a></li>
+            <li><a href="checkout.html" class="nav-link">Checkout</a></li>
+        </ul>
+    </nav>
+
+    <section style="padding-top: 6rem;" id="admin">
+        <div class="admin-wrapper">
+            <!-- LOGIN CARD -->
+            <div id="admin-login" class="admin-card">
+                <h2>Admin Login</h2>
+                <p class="section-subtitle">Restricted access &mdash; Karsamrit team only</p>
+
+                <form id="admin-login-form" class="admin-form">
+                    <label>
+                        Username
+                        <input type="text" id="admin-username" placeholder="Admin username">
+                    </label>
+                    <label>
+                        Password
+                        <input type="password" id="admin-password" placeholder="Admin password">
+                    </label>
+                    <button type="submit" class="btn" id="admin-login-btn">Login</button>
+                    <p id="admin-login-error" class="admin-error"></p>
+                </form>
+            </div>
+
+            <!-- ADMIN PANEL (hidden until login) -->
+            <div id="admin-panel" class="admin-panel" style="display: none;">
+                <div class="admin-toolbar">
+                    <div>
+                        <h2>Orders Dashboard</h2>
+                        <p class="admin-subtitle">
+                            Logged in as <span id="admin-username-label"></span>
+                        </p>
+                    </div>
+                    <div class="admin-toolbar-actions">
+                        <button class="btn btn-small" id="admin-refresh-btn">Refresh</button>
+                        <button class="btn btn-small" id="admin-logout-btn">Logout</button>
+                    </div>
+                </div>
+                <div class="admin-stats">
+                    <div class="stat-card">
+                        <div class="stat-label">Today's Orders</div>
+                        <div class="stat-value" id="stat-today-orders">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Today's Revenue (₹)</div>
+                        <div class="stat-value" id="stat-today-revenue">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Pending Deliveries</div>
+                        <div class="stat-value" id="stat-pending-deliveries">0</div>
+                    </div>
+                </div>
+                <!-- FILTERS + SORT -->
+                <div class="admin-filters">
+                    <div class="filter-group">
+                        <label for="order-sort">Sort by</label>
+                        <select id="order-sort">
+                            <option value="created_desc">Order date (newest first)</option>
+                            <option value="created_asc">Order date (oldest first)</option>
+                            <option value="delivery_asc">Delivery date (earliest first)</option>
+                            <option value="delivery_desc">Delivery date (latest first)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="product-filter">Filter by product</label>
+                        <select id="product-filter">
+                            <option value="all">All products</option>
+                            <!-- options JS se aate hain -->
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="order-search">Search (name / phone)</label>
+                        <input type="text" id="order-search" placeholder="Type to search...">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="status-filter">Status</label>
+                        <select id="status-filter">
+                            <option value="all">All statuses</option>
+                            <option value="placed">Placed</option>
+                            <option value="packed">Packed</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="order-table-wrapper">
+                    <table class="order-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Customer</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Items</th>
+                                <th>Items Total</th>
+                                <th>Shipping</th>
+                                <th>Grand Total</th>
+                                <th>Est. Delivery</th>
+                                <th>Status</th>
+                                <th>Payment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-body">
+                            <!-- Rows injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <p id="orders-empty" class="admin-empty-msg" style="display:none;">
+                    No orders found.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="logo.jpeg" alt="Karsamrit Foods Logo" class="footer-logo-img">
+                </div>
+                <p class="footer-text">
+                    Pure Taste. Natural Goodness. Bringing the best of nature directly to your home.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#products">Shop</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Karsamrit Foods. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>
